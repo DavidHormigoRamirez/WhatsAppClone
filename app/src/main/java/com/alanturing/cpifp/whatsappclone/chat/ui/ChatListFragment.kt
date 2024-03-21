@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.alanturing.cpifp.whatsappclone.databinding.FragmentChatListBinding
 
+//import com.alanturing.cpifp.whatsappclone.databinding.FragmentChatListBinding
+
 class ChatListFragment : Fragment() {
     private lateinit var binding: FragmentChatListBinding
 
@@ -17,7 +19,7 @@ class ChatListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentChatListBinding.inflate(
+       binding = FragmentChatListBinding.inflate(
             inflater,
             container,
             false
