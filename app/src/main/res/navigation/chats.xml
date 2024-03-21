@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chats"
+    app:startDestination="@id/chatListFragment">
+
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.alanturing.cpifp.whatsappclone.chat.ui.ChatListFragment"
+        android:label="ChatListFragment" >
+        <action
+            android:id="@+id/action_chatListFragment_to_selectContactFragment"
+            app:destination="@id/selectContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectContactFragment"
+        android:name="com.alanturing.cpifp.whatsappclone.chat.ui.SelectContactFragment"
+        android:label="fragment_select_contact"
+        tools:layout="@layout/fragment_select_contact" />
+</navigation>

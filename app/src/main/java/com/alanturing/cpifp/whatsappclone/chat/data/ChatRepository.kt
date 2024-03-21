@@ -7,8 +7,8 @@ class ChatRepository {
         get() = _chats.toList()
 
     init {
-        _chats.add(Chat(1,"David Hormigo"))
-        _chats.add(Chat(2, "Pepe Periañez"))
-        _chats.add(Chat(15,"Juan Marcial"))
+        _chats.add(Chat("",1,"David Hormigo"))
+        _chats.add(Chat("",2, "Pepe Periañez"))
+        _chats.add(Chat("",15,"Juan Marcial"))
     }
 }
