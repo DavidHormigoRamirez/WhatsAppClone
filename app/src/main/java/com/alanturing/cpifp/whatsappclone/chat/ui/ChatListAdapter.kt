@@ -9,12 +9,14 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.alanturing.cpifp.whatsappclone.chat.data.Chat
 import com.alanturing.cpifp.whatsappclone.databinding.ChatListItemBinding
 
-class ChatListAdapter(private val toChat: (View) -> Unit) :ListAdapter<Chat, ChatListAdapter.ChatListItemViewHolder>(ChatDiff) {
+class ChatListAdapter(private val toChat: (View,Chat) -> Unit) :ListAdapter<Chat, ChatListAdapter.ChatListItemViewHolder>(ChatDiff) {
 
     inner class ChatListItemViewHolder(private val binding: ChatListItemBinding):ViewHolder(binding.root) {
         fun bindTo(chat:Chat) {
             binding.contactName.text = chat.toName
-            binding.root.setOnClickListener(toChat)
+            binding.root.setOnClickListener {
+                toChat(binding.root,chat)
+            }
         }
     }
 
