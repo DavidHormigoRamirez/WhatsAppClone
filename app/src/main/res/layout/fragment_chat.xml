@@ -8,18 +8,27 @@
     <TextView
         android:id="@+id/contact_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         style="@style/TextAppearance.Material3.HeadlineLarge"
-
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/message_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/contact_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/new_text_label"
+        android:layout_marginBottom="96dp"
+        android:layout_marginTop="?actionBarSize"/>
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/new_text_label"
-        android:layout_width="match_parent"
+        android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
@@ -28,7 +37,7 @@
         app:boxCornerRadiusTopEnd="45dp"
         app:boxCornerRadiusTopStart="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/send_mesage"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -36,5 +45,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
+
+ <com.google.android.material.floatingactionbutton.FloatingActionButton
+     android:id="@+id/send_mesage"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     app:layout_constraintTop_toTopOf="@id/new_text_label"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@id/new_text_label"
+     app:layout_constraintBottom_toBottomOf="@id/new_text_label"
+     android:contentDescription="Send Image"
+     android:src="@drawable/ic_send"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
