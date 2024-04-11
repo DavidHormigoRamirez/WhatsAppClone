@@ -1,9 +1,11 @@
 package com.alanturing.cpifp.whatsappclone.chat.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ListAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -36,7 +38,7 @@ class ChatFragment : Fragment() {
         )
         return binding.root
     }
-    private fun sendMessage() {
+    private fun sendMessage(view:View) {
         val rv = binding.messageList
         val text = binding.newTextInput.text.toString()
 
@@ -47,6 +49,10 @@ class ChatFragment : Fragment() {
                 it.id == arguments.id
             })
             binding.newTextInput.text?.clear()
+
+            // Cerramos el teclado
+            val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
 
     }
@@ -69,7 +75,7 @@ class ChatFragment : Fragment() {
         rv.adapter = adapter
 
         binding.sendMesage.setOnClickListener {
-            sendMessage()
+            sendMessage(it)
         }
     }
 }
