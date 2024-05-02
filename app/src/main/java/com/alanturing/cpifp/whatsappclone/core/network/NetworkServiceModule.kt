@@ -17,6 +17,7 @@ class NetworkServiceModule {
     @Singleton
     fun provideNetworkService(): WhatsAppCloneService {
         val retrofit: Retrofit = Retrofit.Builder()
+            // TODO ACTUALIZAR A MI HOST
             .baseUrl("https://6ca2-79-145-80-213.ngrok-free.app")
             .addConverterFactory(GsonConverterFactory.create())
             .build()

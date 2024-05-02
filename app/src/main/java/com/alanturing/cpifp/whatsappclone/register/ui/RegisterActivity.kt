@@ -2,7 +2,7 @@ package com.alanturing.cpifp.whatsappclone.register.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -30,27 +30,21 @@ class RegisterActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.user.collect {uiState ->
+                    binding.progressIndicator.visibility = View.GONE
+                    binding.phoneLabel.error = null
                     when(uiState) {
+                        is UiState.started -> {}
                         is UiState.error -> {
-
-                            val error = uiState as UiState.error
-                            Toast.makeText(this@RegisterActivity,
-                                error.error,
-                                Toast.LENGTH_LONG)
-                            binding.phoneLabel.error = error.error
+                            binding.phoneLabel.error = uiState.error
                         }
                         is UiState.loading -> {
-                            binding.phoneLabel.error = null
+                            binding.progressIndicator.visibility = View.VISIBLE
                         }
                         is UiState.success -> {
-                                binding.phoneLabel.error = null
                                 startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
                                 finish()
                         }
-
-
                     }
-                    // HACER COSAS CUANDO CAMBIE user
 
                 }
             }
