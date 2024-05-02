@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.ListAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,15 +38,22 @@ class ChatFragment : Fragment() {
         return binding.root
     }
     private fun sendMessage(view:View) {
+        // Recupero el RecyclerView
         val rv = binding.messageList
+        // Obtengo el texto del input field
         val text = binding.newTextInput.text.toString()
 
         if (text.isNotBlank()) {
+            // Añado al repositorio el nuevo mensaje
             messageRepository.addMessage(text,false,arguments.id)
+            // Recupero el adapter asociado al RecyclerView
             val adapter:MessageListAdapter = rv.adapter as MessageListAdapter
-            adapter.submitList(messageRepository.message.filter {
+            /*adapter.submitList(messageRepository.message.filter {
                 it.id == arguments.id
-            })
+            })*/
+
+            adapter.submitList(messageRepository.getMessage((arguments.id)))
+
             binding.newTextInput.text?.clear()
 
             // Cerramos el teclado
